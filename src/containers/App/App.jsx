@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import App from '../../components/App';
+import { fetchIssueList } from '../App/actions';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
 
-    console.log(this.state = {});
-    this.setState({ 'hi': 'test'})
-  }
-  render() {
-    return (
-      <div className="App">
-       <input type='text'></input>
-      </div>
-    );
-  }
+const mapStateToProps = (state) => {
+    return {
+        issueList: state.issueList,
+    }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchIssueList: dispatch(fetchIssueList()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

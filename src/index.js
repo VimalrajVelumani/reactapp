@@ -17,14 +17,13 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { AppContainer } from 'react-hot-loader';
-// import {  } from 'react-router-dom';
-// import { renderRoutes } from 'react-router-config';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 // Import root app
 
 /* eslint-enable import/no-webpack-loader-syntax */
 
-import App from './containers/App/index';
+import IssueListPage from './containers/App';
 import configureStore from './store';
 import rootSaga from './sagas/rootSaga';
 
@@ -38,16 +37,17 @@ import rootSaga from './sagas/rootSaga';
 const store = configureStore();
 store.runSaga(rootSaga);
 
-const render = App => {
+
   ReactDOM.render(
     <Provider store={store}>
-        <AppContainer>
-          <App />
-        </AppContainer>
+          <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={IssueListPage} />
+            </Switch>
+        </BrowserRouter>
     </Provider>,
     document.getElementById('root')
   );
-};
 
-render(App);
+
 
