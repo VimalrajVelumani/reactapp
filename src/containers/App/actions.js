@@ -1,6 +1,6 @@
 export function fetchIssueList() {
     return {
-      type: 'fetchIssueList',
+      type: 'FETCH_ISSUE_LIST',
       payload: '',
     };
   }
